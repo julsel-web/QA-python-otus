@@ -1,7 +1,9 @@
 import math
 
+from src.Figure import Figure
 
-class Circle:
+
+class Circle(Figure):
     def __init__(self, radius):
         if radius < 0:
             raise ValueError("Радиус не может быть отрицательным")
