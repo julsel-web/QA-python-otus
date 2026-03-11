@@ -6,7 +6,7 @@ from src.Figure import Figure
 class Triangle(Figure):
     def __init__(self, side_a, side_b, side_c):
         if side_a<=0 or side_b<=0 or side_c<=0:
-            raise ValueError("Стороны прямоугольника не могут быть меньше 0. "
+            raise ValueError("Стороны треугольника не могут быть меньше 0. "
                              "Введите положительное значение")
 
         if side_c+side_a < side_b or side_c+side_b < side_a or side_a+side_b < side_c :
