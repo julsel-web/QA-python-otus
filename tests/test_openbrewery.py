@@ -8,12 +8,18 @@ def test_get_breweries(session, brewery_api):
     assert isinstance(response.json(), list)
 
 
-@pytest.mark.parametrize("city", ["san_diego", "new_york"])
+@pytest.mark.parametrize("city", ["san diego", "new york"])
 def test_breweries_by_city(session, brewery_api, city):
     response = session.get(brewery_api, params={"by_city": city})
 
     assert response.status_code == 200
-    assert isinstance(response.json(), list)
+    data = response.json()
+    assert data, "Ответ пустой"
+
+    for brewery in data:
+        assert "name" in brewery
+        assert "city" in brewery
+        assert brewery["city"].lower() == city.lower()
 
 
 def test_single_brewery(session, brewery_api):
@@ -36,6 +42,14 @@ def test_breweries_by_type(session, brewery_api, brewery_type):
     response = session.get(brewery_api, params={"by_type": brewery_type})
 
     assert response.status_code == 200
+
+    data = response.json()
+    assert data, "Ответ пустой"
+
+    for brewery in data:
+        assert "id" in brewery
+        assert "name" in brewery
+        assert "brewery_type" in brewery
 
 
 def test_search_brewery(session, brewery_api):
