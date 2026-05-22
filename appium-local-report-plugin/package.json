@@ -1,0 +1,14 @@
+{
+  "name": "appium-local-report-plugin",
+  "version": "1.0.0",
+  "description": "Local Appium plugin that adds custom report endpoints for pytest mobile tests.",
+  "main": "index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "appium": "^3.0.0"
+  },
+  "appium": {
+    "pluginName": "local-report",
+    "mainClass": "LocalReportPlugin"
+  }
+}
